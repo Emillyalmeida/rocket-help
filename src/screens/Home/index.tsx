@@ -6,9 +6,10 @@ import {
   Heading,
   Text,
   FlatList,
+  Center,
 } from "native-base";
 
-import { SignOut } from "phosphor-react-native";
+import { SignOut, ChatTeardropText } from "phosphor-react-native";
 
 import Logo from "../../assets/logo_secondary.svg";
 import Filter from "../../components/filters";
@@ -25,12 +26,12 @@ const Home = () => {
   );
 
   const [orders, setOrders] = useState<OrderProps[]>([
-    {
-      id: "12345",
-      client: "Emilly",
-      time: "11/12/2022 as 12:00",
-      status: "working",
-    },
+    // {
+    //   id: "12345",
+    //   client: "Emilly",
+    //   time: "11/12/2022 as 12:00",
+    //   status: "working",
+    // },
   ]);
 
   return (
@@ -75,6 +76,15 @@ const Home = () => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 100 }}
           renderItem={({ item }) => <Orders data={item} />}
+          ListEmptyComponent={() => (
+            <Center>
+              <ChatTeardropText size={45} color={colors.gray[300]} />
+              <Text color="gray.300" textAlign="center" fontSize="xl" p={4}>
+                Você ainda não possui solicitações{" "}
+                {selectState === "working" ? "em aberto" : "finalizadas"}
+              </Text>
+            </Center>
+          )}
         />
         <Button title="Nova Solicitação" />
       </VStack>
