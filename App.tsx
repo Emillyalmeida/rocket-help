@@ -1,5 +1,7 @@
 import React from "react";
+
 import SignIn from "./src/screens/SignIn";
+import Home from "./src/screens/Home";
 import Loading from "./src/components/loading";
 
 import { NativeBaseProvider, StatusBar } from "native-base";
@@ -20,7 +22,7 @@ export default function App() {
         // backgroundColor="transparent"
         // translucent
       />
-      {fontsLoaded ? <SignIn /> : <Loading />}
+      {fontsLoaded ? <Home /> : <Loading />}
     </NativeBaseProvider>
   );
 }
