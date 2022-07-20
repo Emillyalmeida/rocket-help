@@ -2,6 +2,7 @@ import { VStack, Heading, useTheme, Icon } from "native-base";
 
 import Logo from "../../assets/logo_primary.svg";
 import Input from "../../components/input";
+import Button from "../../components/button";
 
 import { Envelope, Key } from "phosphor-react-native";
 
@@ -29,6 +30,7 @@ const SignIn = () => {
           }
         />
       </VStack>
+      <Button title="Entrar" w="full" />
     </VStack>
   );
 };
