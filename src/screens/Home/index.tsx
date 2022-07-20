@@ -5,14 +5,33 @@ import {
   useTheme,
   Heading,
   Text,
+  FlatList,
 } from "native-base";
 
 import { SignOut } from "phosphor-react-native";
 
 import Logo from "../../assets/logo_secondary.svg";
+import Filter from "../../components/filters";
+
+import { useState } from "react";
+import Orders, { OrderProps } from "../../components/orders";
+import Button from "../../components/button";
 
 const Home = () => {
   const { colors } = useTheme();
+
+  const [selectState, setSelectState] = useState<"working" | "finished">(
+    "working"
+  );
+
+  const [orders, setOrders] = useState<OrderProps[]>([
+    {
+      id: "12345",
+      client: "Emilly",
+      time: "11/12/2022 as 12:00",
+      status: "working",
+    },
+  ]);
 
   return (
     <VStack bg="gray.700" flex={1} pb={5}>
@@ -36,7 +55,28 @@ const Home = () => {
           </Text>
         </HStack>
 
-        <HStack></HStack>
+        <HStack space={3} py={3}>
+          <Filter
+            title="Em andamento"
+            isAtivate={selectState === "working" ? true : false}
+            type="working"
+            onPress={() => setSelectState("working")}
+          />
+          <Filter
+            title="Finalizado"
+            isAtivate={selectState === "finished" ? true : false}
+            type="finished"
+            onPress={() => setSelectState("finished")}
+          />
+        </HStack>
+        <FlatList
+          data={orders}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 100 }}
+          renderItem={({ item }) => <Orders data={item} />}
+        />
+        <Button title="Nova Solicitação" />
       </VStack>
     </VStack>
   );
