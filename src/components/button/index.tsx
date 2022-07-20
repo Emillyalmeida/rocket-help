@@ -11,7 +11,7 @@ const Button = ({ title, ...rest }: BProps) => {
       rounded="sm"
       h={14}
       fontSize="sm"
-      _pressed={{ bg: "gray.500" }}
+      _pressed={{ bgColor: "green.500" }}
       {...rest}
     >
       <Heading color="gray.100" fontSize="sm">

@@ -10,12 +10,12 @@ const SignIn = () => {
   const { colors } = useTheme();
 
   return (
-    <VStack flex={1} alignItems="center" bg="gray.600" px={6} pt={24} space={5}>
+    <VStack flex={1} alignItems="center" bg="gray.600" px={6} pt={24} space={3}>
       <Logo />
-      <Heading color="gray.100" fontSize="2xl">
+      <Heading pt={8} color="gray.100" fontSize="xl">
         Acesse a conta
       </Heading>
-      <VStack flex={1} space={3}>
+      <VStack pt={3} pb={5} space={3}>
         <Input
           placeholder="E-mail"
           InputLeftElement={
@@ -30,7 +30,7 @@ const SignIn = () => {
           }
         />
       </VStack>
-      <Button title="Entrar" w="full" />
+      <Button title="Entrar" w="full" mt={2} />
     </VStack>
   );
 };
